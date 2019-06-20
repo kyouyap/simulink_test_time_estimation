@@ -1,4 +1,4 @@
-#Simulinkに関するファイル群
+# Simulinkに関するファイル群
 ## simulinkcode.py
 実行すると実行ディレクトリ直下でgithubからMatlab属性のファイルでsimulinkと名のつくレポジトリから全力でcloneする。
 
