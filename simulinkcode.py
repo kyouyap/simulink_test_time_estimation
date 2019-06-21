@@ -3,6 +3,8 @@ import subprocess as sp
 url="https://api.github.com/search/repositories?l=MATLAB&q=simulink"
 clonekey=[]
 def keyget(key):
+
+    error=0
     a=rq.get(url).json()
     totalcount=a["total_count"]
     repeatcount=int(totalcount/30)
@@ -10,17 +12,20 @@ def keyget(key):
 
     for i in range(repeatcount):
         a.append(rq.get(url+"&page=%d",i+1).json())
-    for i in range(repeatcount):
+    for i in range(10):
         for j in range(30):
             print("i:"+str(i)+"j;"+str(j))
             try:
                 key.append(a[i]["items"][j]["html_url"]+".git")
             except KeyError:
                 print("Keyerror")
+                error+=1
+                print(a[i]["items"][j]["name"])
+    print("error"+str(error))
 
 def clone(key):
     for i in key:
-        cmd="git clone "+i
+        cmd="git clone "+i+" ./"
         sp.call(cmd.split())
 
 def main(key):
@@ -30,4 +35,3 @@ def main(key):
 
 if __name__ == '__main__':
     main(clonekey)
-   
