@@ -20,7 +20,7 @@ def keyget(key):
 
 def clone(key):
     for i in key:
-        cmd="git clone "+i+" ."
+        cmd="git clone "+i
         sp.call(cmd.split())
 
 def main(key):
@@ -30,3 +30,4 @@ def main(key):
 
 if __name__ == '__main__':
     main(clonekey)
+   
