@@ -1,15 +1,20 @@
 import requests as rq
 import subprocess as sp
 import glob
+
+
 class gitcollect:
 
     def __init__(self,url="https://api.github.com/search/repositories?l=MATLAB&q=simulink"):
         self.clonekey=[]
         self.movelist=glob.glob("./**/*.slx",recursive=True)
         self.url=url
+        self.page=0
+
     def keyget(self,page=0):
         error=0
         flag=0
+        self.clonekey=[]
         a=rq.get(self.url).json()
         try:
             totalcount=a["total_count"]
@@ -36,28 +41,30 @@ class gitcollect:
             print("error"+str(error))
 
     def clone(self):
-        j=0
+
         for i in self.clonekey:
-            cmd="git clone "+i+" ./test/sample"+str(j)
+            cmd="git clone "+i+" ./test/sample"+str(self.page)
             sp.call(cmd.split())
-            j+=1
+            self.page+=1
 
     def move(self):
         for i in self.movelist:
-            cmd="mv "+i+" ./test/"
+            cmd="mv -f "+i+" ./test"
             sp.call(cmd.split())
+            print(i)
 
     def main(self):
         sp.call("mkdir test".split())
-        for i in range(10):
-            self.keyget(i*10)
-            print("keyget time"+str(i))
+        for o in range(50):
+            self.keyget(o)
 
-        self.clone()
-        self.move()
-        print("finish")
-        # self.move()
+            self.clone()
+            # self.move()
+            print("finish")
+            # self.move()
 
 if __name__ == '__main__':
     a=gitcollect()
     a.main()
+    # a.move()
+    # print(a.movelist)
