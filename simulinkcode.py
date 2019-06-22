@@ -40,6 +40,7 @@ class gitcollect:
         for i in self.clonekey:
             cmd="git clone "+i+" ./test/sample"+str(j)
             sp.call(cmd.split())
+            j+=1
 
     def move(self):
         for i in self.movelist:
