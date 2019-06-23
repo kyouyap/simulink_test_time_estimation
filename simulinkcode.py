@@ -7,7 +7,7 @@ class gitcollect:
 
     def __init__(self,url="https://api.github.com/search/repositories?l=MATLAB&q=simulink"):
         self.clonekey=[]
-        self.movelist=glob.glob("./**/**/*.slx",recursive=True)
+        self.movelist=glob.glob("./**/**/*.mdl",recursive=True)
         self.url=url
         self.page=0
 
@@ -44,8 +44,9 @@ class gitcollect:
 
     def move(self):
         for i in self.movelist:
-            cmd="mv -f {} ./test2".format(i)
-            sp.call(cmd, shell=True)
+            # cmd=["mv","-f","'"+i+"'", " './test/'"]
+            cmd="mv -f {0}{1}{2} ./test/ ".format("'",i,"'")
+            sp.call(cmd,shell=True)
             # print(i)
 
     def main(self):
@@ -53,7 +54,7 @@ class gitcollect:
         for o in range(1,50):
             self.keyget(o)
             self.clone()
-            
+
 
             #
             # self.clone()
@@ -63,7 +64,7 @@ class gitcollect:
 
 if __name__ == '__main__':
     a=gitcollect()
-    a.main()
+    # a.main()
 
-    # a.move()
+    a.move()
     # print(a.movelist)
