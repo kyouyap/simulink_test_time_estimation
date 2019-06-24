@@ -19,6 +19,6 @@
 >    result = mdlParser(filePath)
 >  File "MDLparsetool.py", line 107, in mdlParser
 >    result = mdlparser.parseString(mdldata)
->  File "/Users/ogatatakuya/.pyenv/versions/2.7.11/lib/python2.7/site-packages/pyparsing.py", line 1828, in parseString
+>  File "~/.pyenv/versions/2.7.11/lib/python2.7/site-packages/pyparsing.py", line 1828, in parseString
 >    raise exc
 >pyparsing.ParseException: Expected "}" (at char 26802), (line:647, col:3)
