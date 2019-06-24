@@ -9,6 +9,7 @@
 2019/6/22:正しい動作をすることを確認。容量に気をつけましょう.
 2019/6/24:MDLpursetool.pyを使ってみたが動かない。
 具体的なerrorcodeは以下
+
 >~/resesrch/simulink_test_time_estimation/testExample/fourBar.mdl
 >read
 >Traceback (most recent call last):
