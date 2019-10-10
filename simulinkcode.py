@@ -64,7 +64,7 @@ class gitcollect:
 
 if __name__ == '__main__':
     a=gitcollect()
-    # a.main()
+    a.main()
 
     a.move()
     # print(a.movelist)
